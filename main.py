@@ -19,7 +19,7 @@ def print_header():
 
 def main():
 
-
+    #Statikus járatok hozzáadása
     AirMan = AirManager(
           Airline(
           "Wizz air",
@@ -40,28 +40,36 @@ def main():
           domFlight("ISL",55000)
         )
     )
-
-    AirMan.add_airline(
-            Airline(
-            "Teszt",
-            domFlight("IST",35000),
-            domFlight("ISL",55000)
-            )
-        )
-    print_header()
-    print("Válasszon a lehetőségek közül!")
-    print("-------------------------------")
-    print("1. Járatok listája")
-    print("2. Járat Foglalás")
-    print("3. Foglalás törlése")
-    print("4. Foglalások listája")
-    print("-------------------------------")
-
-    AirMan.view_all_flight()
+    #Statikus foglalások hozzáadás
     Ticketing = Tickets()
-    Ticketing.buy(8)
-    Ticketing.buy(4)
-    Ticketing.view(AirMan)
+
+    print_header()
+    while True:
+
+      print("Válasszon a lehetőségek közül!")
+      print("-------------------------------")
+      print("1. Járatok listája")
+      print("2. Járat Foglalás")
+      print("3. Foglalás törlése")
+      print("4. Foglalások listája")
+      print("-------------------------------")
+      print()
+      
+      try:
+        choice = int(input("Válasszon egy opciót: "))
+        if choice == 1:
+            AirMan.view_all_flight()
+        elif choice == 2:
+            flightNumber = int(input("Adja meg a járat számát: "))
+            Ticketing.buy(flightNumber)
+
+        elif choice == 4:
+            Ticketing.view(AirMan)
+        else:
+            print(f"\n Nincs ilyen menüpont({choice}).")
+
+      except ValueError:
+        print("\n Csak számot adhat meg.")
 
 if __name__ == '__main__':
     main()
