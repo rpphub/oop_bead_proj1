@@ -5,7 +5,8 @@ from airline.manager import AirManager
 from ticketing.ticketing import Tickets
 
 def print_header():
-  print("""/$$$$$$$  /$$$$$$$       /$$$$$$$$ /$$$$$$  /$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$$ /$$$$$$ /$$   /$$  /$$$$$$ 
+  print(r"""
+ /$$$$$$$  /$$$$$$$       /$$$$$$$$ /$$$$$$  /$$$$$$  /$$   /$$ /$$$$$$$$ /$$$$$$$$ /$$$$$$ /$$   /$$  /$$$$$$ 
 | $$__  $$| $$__  $$     |__  $$__/|_  $$_/ /$$__  $$| $$  /$$/| $$_____/|__  $$__/|_  $$_/| $$$ | $$ /$$__  $$
 | $$  \ $$| $$  \ $$        | $$     | $$  | $$  \__/| $$ /$$/ | $$         | $$     | $$  | $$$$| $$| $$  \__/
 | $$$$$$$/| $$$$$$$/ /$$$$$$| $$     | $$  | $$      | $$$$$/  | $$$$$      | $$     | $$  | $$ $$ $$| $$ /$$$$
@@ -41,13 +42,30 @@ def main():
         )
     )
     #Statikus foglalások hozzáadás
-    Ticketing = Tickets()
-    Ticketing.buy(AirMan, "Fá Zoltán", "W41")
-    Ticketing.buy(AirMan, "Heu Réka", "W41")
-    Ticketing.buy(AirMan, "Krump Lee", "FR5")
-    Ticketing.buy(AirMan, "Nap Pali", "TK7")
-    Ticketing.buy(AirMan, "Díz Elek", "Tk8")
-    Ticketing.buy(AirMan, "Har Mónika", "W43")
+    Ticketing = Tickets({
+        "name": "Fá Zoltán",
+        "flightNumber": "W41"
+    },
+    {
+        "name": "Heu Réka",
+        "flightNumber": "W41"
+    },
+    {
+        "name": "Krump Lee",
+        "flightNumber": "FR5"
+    },
+    {
+        "name": "Nap Pali",
+        "flightNumber": "TK7"
+    },
+    {
+        "name": "Díz Elek",
+        "flightNumber": "TK8"
+    },
+    {
+        "name": "Har Mónika",
+        "flightNumber": "W43"
+    })
 
     print_header()
     while True:

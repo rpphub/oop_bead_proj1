@@ -1,8 +1,8 @@
 from airline.manager import AirManager
 
 class Tickets:
-  def __init__(self):
-    self.tickets = []
+  def __init__(self,*tickets):
+    self.tickets = list(tickets)
   
   def buy(self,AirMan:AirManager, name:str, flightNumber:str):
     flight = AirMan.get_flight_by_number(flightNumber)
