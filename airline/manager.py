@@ -10,7 +10,7 @@ class AirManager():
       self.airlines.append(airline)
 
   def view_all_flight(self):
-    print(f"{"Járatszám":{" "}^10}   {"Típus":{" "}^12}   {"Uticél":{" "}^8}   {"Ár":{" "}^10}")
+    print(f"{"Járatszám":{" "}^10}   {"Típus":{" "}^12}   {"Uticél":{" "}^8}   {"Ár(Ft)":{" "}^10}")
 
     for airline in self.airlines:
       #Légitársaságok
@@ -18,7 +18,7 @@ class AirManager():
         #Járatok
         print(f"{flight.flightNumber:{" "}^10}   {flight.type:{" "}^12}   {flight.dest:{" "}^8}   {flight.price:{" "}^10}")
 
-  def get_flight_by_number(self,flightNumber:int) -> Flight:
+  def get_flight_by_number(self,flightNumber:str) -> Flight:
     for airline in self.airlines:
       #Légitársaságok
       for flight in airline.Flights:

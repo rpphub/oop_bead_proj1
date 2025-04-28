@@ -23,48 +23,71 @@ def main():
     AirMan = AirManager(
           Airline(
           "Wizz air",
-          InterFlight("BUD",35000),
-          InterFlight("DEB",20000),
-          InterFlight("SOB",20000)
+          InterFlight("W4","BUD",35000),
+          InterFlight("W4","DEB",20000),
+          InterFlight("W4","SOB",20000)
         ),
           Airline(
           "Ryanair",
-          InterFlight("BUD",35000),
-          InterFlight("DEB",15000),
-          InterFlight("SOB",14000)
+          InterFlight("FR","BUD",35000),
+          InterFlight("FR","DEB",15000),
+          InterFlight("FR","SOB",14000)
         ),
           Airline(
           "Turkish Airlines",
-          domFlight("IST",35000),
-          domFlight("SAW",45000),
-          domFlight("ISL",55000)
+          domFlight("TK","IST",35000),
+          domFlight("TK","SAW",45000),
+          domFlight("TK","ISL",55000)
         )
     )
     #Statikus foglalások hozzáadás
     Ticketing = Tickets()
+    Ticketing.buy(AirMan, "Fá Zoltán", "W41")
+    Ticketing.buy(AirMan, "Heu Réka", "W41")
+    Ticketing.buy(AirMan, "Krump Lee", "FR5")
+    Ticketing.buy(AirMan, "Nap Pali", "TK7")
+    Ticketing.buy(AirMan, "Díz Elek", "Tk8")
+    Ticketing.buy(AirMan, "Har Mónika", "W43")
 
     print_header()
     while True:
-
+      
+      print()
       print("Válasszon a lehetőségek közül!")
       print("-------------------------------")
       print("1. Járatok listája")
       print("2. Járat Foglalás")
       print("3. Foglalás törlése")
       print("4. Foglalások listája")
+      print("5. Kilépés")
       print("-------------------------------")
       print()
       
       try:
         choice = int(input("Válasszon egy opciót: "))
         if choice == 1:
+            print("- Járatok listája -")
+            print()
             AirMan.view_all_flight()
         elif choice == 2:
-            flightNumber = int(input("Adja meg a járat számát: "))
-            Ticketing.buy(flightNumber)
-
+            print("- Járat Foglalás -")
+            print()
+            name = str(input("Adja meg a nevét: "))
+            flightNumber = str(input("Adja meg a járat számát: ").upper())
+            Ticketing.buy(AirMan, name, flightNumber)
+        elif choice == 3:
+            print("- Foglalás törlése -")
+            print()
+            ticketId = int(input("Adja meg a törlendő foglalás azonosítóját: "))
+            Ticketing.cancel(AirMan, ticketId)
         elif choice == 4:
+            print("- Foglalások listája -")
+            print()
             Ticketing.view(AirMan)
+        elif choice == 5:
+            print("--------- Viszlát ! ----------")
+            print()
+            break
         else:
             print(f"\n Nincs ilyen menüpont({choice}).")
 
